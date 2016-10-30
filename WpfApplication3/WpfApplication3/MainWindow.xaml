@@ -1,0 +1,70 @@
+﻿<Window x:Class="WpfApplication3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication3"
+       
+        Title="WPF Calculator" MinHeight="650" MinWidth="420" Height="650" Width="420" FontSize="14" FontFamily="Century Gothic" ResizeMode="NoResize" Icon="Resources/CalcLogo.PNG" KeyDown="keydown_click">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition />
+            <RowDefinition Height="149*"/>
+            <RowDefinition Height="42"/>
+        </Grid.RowDefinitions>
+
+        <Canvas Grid.Row="0" Background="#FFD52027" Grid.ColumnSpan="2">
+            <Image Height="58"  Canvas.Top="0" Source="Resources/Numbers.PNG" Stretch="Fill" Width="414" />
+        </Canvas>        
+            <StackPanel Grid.Row="1" Margin="1">
+                <TextBlock Name="outputTextBlock" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" Height="50"/>
+                <TextBlock Name="inputTextBlock" TextWrapping="Wrap" Text="0" TextAlignment="Right" VerticalAlignment="Stretch" Height="50"/>
+        </StackPanel>       
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Content="Back" Background="Black" Foreground="White" Name="back" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="0" Grid.Row="0" Click="back_Click" />
+            <Button Tag="operand" Background="Brown" Foreground="White" Content="7" Name="seven" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="0" Grid.Row="1" Click="button_click" />
+            <Button Tag="operand" Background="Brown" Foreground="White" Content="4" Name="four" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="0" Grid.Row="2" Click="button_click"/>
+            <Button Tag="operand" Background="Brown" Foreground="White" Content="1" Name="one" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="0" Grid.Row="3" Click="button_click" />
+            <Button Tag="number" Background="Brown" Foreground="White" Content="0" Name="zero" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="150" Height="75" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Click="button_click"/>
+            <Button Content="Clear" Background="Black" Foreground="White" Name="clear" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="1" Grid.Row="0" Click="clear_Click" />
+            <Button Tag="operand" Background="Brown" Foreground="White" Content="8" Name="eight"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="1" Grid.Row="1" Click="button_click" />
+            <Button Tag="operand" Background="Brown" Foreground="White" Content="5" Name="five" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="1" Grid.Row="2" Click="button_click"/>
+            <Button Tag="operand" Background="Brown" Foreground="White" Content="2" Name="two" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="1" Grid.Row="3" Click="button_click" />
+            <Button Content="Reset" Background="Black" Foreground="White" Name="Reset" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="2" Grid.Row="0" Click="Reset_Click" />
+            <Button Tag="operand" Background="Brown" Foreground="White" Content="9" Name="nine" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="2" Grid.Row="1" Click="button_click" />
+            <Button Tag="operand" Background="Brown" Foreground="White" Content="6" Name="six"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="2" Grid.Row="2" Click="button_click" />
+            <Button Tag="operand" Background="Brown" Foreground="White" Content="3" Name="three" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="2" Grid.Row="3" Click="button_click" />
+            <Button Tag="operand" Background="Brown" Foreground="White" Content="." Name="dot" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="2" Grid.Row="4" Click="button_click" />
+            <Button Content="Reload" Background="Black" Foreground="White" Name="reload" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="3" Grid.Row="0" Click="reload_Click" />
+            <Button Tag="biOperator" Background="Red" Foreground="White" Content="/" Name="division" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="3" Grid.Row="1" Click="binary_Click" />
+            <Button Tag="biOperator" Background="Red" Foreground="White" Content="X" Name="multiplication" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="3" Grid.Row="2" Click="binary_Click" />
+            <Button Tag="biOperator" Background="Red" Foreground="White" Content="-" Name="subtractor" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="3" Grid.Row="3" Click="binary_Click"/>
+            <Button Tag="biOperator" Background="Red" Foreground="White" Content="+" Name="addition" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="3" Grid.Row="4" Click="binary_Click"/>
+            <Button Content="Neg" Background="Violet" Foreground="White" Name="negation" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="4" Grid.Row="0" Click="unary_Click"/>
+            <Button Content="%" Background="Violet" Foreground="White" Name="modulus" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="4" Grid.Row="1" Click="binary_Click"/>
+            <Button Content="Pow" Background="Violet" Foreground="White" Name="power" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="4" Grid.Row="2" Click="binary_Click"/>
+            <Button Content="Sqrt" Background="Violet" Foreground="White" Name="sqrt" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="4" Grid.Row="3" Click="unary_Click"/>
+            <Button Content="=" Background="Violet" Foreground="White" Name="equalTo"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="75" Height="75" Grid.Column="4" Grid.Row="4" Click="equalTo_Click" />
+        </Grid>
+        <WrapPanel Grid.Row="4" Background="#FF2FC0C7" Grid.ColumnSpan="2">
+            <Image Height="42" Source="Resources/CalcLogo.PNG" />
+        </WrapPanel>
+
+    </Grid>
+</Window>
